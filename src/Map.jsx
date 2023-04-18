@@ -190,6 +190,7 @@ class Map extends Component {
             }
         })
         this.setOffsets();
+        /* Pour mettre en place la position du background on prend la position que l'on a récupéré que l'on soustrait à la valeur maximale possible sur le prototype puis on ajoute les offsets */
         document.body.style.backgroundPosition = -(55 - data.y + this.state.yOffset) + 'cm ' + -(46 - data.x + this.state.xOffset) + 'cm'; /* SPART x becomes y// 55 and 46 are max ranges we reverse the whole thing*/
         this.refX.current.value = data.x;
         this.refY.current.value = data.y;
