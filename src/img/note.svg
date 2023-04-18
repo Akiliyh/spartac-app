@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-3275.43,-4481.51)">
+        <g transform="matrix(1.54943,-2.46519e-32,0,0.92442,749.83,3927.7)">
+            <g id="lecteur-de-musique.png" transform="matrix(0.645398,1.72111e-32,-0,1.08176,1630.02,599.085)">
+                <use xlink:href="#_Image1" x="0" y="0" width="19.943px" height="19.943px" transform="matrix(0.997153,0,0,0.997153,0,0)"/>
+            </g>
+        </g>
+    </g>
+    <defs>
+        <image id="_Image1" width="20px" height="20px" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAACXBIWXMAAA7EAAAOxAGVKw4bAAABZElEQVQ4ja3Uv2sUQRjG8c+GKxISixBTCWkECy3yCyxtdjuJkEQLSR3sspJOixASsLHaTuwDQbA6YrULwUr/iGBrQEQlEExOY7F7sCZ3t7tHHhgG3uH9zjPMMxMYUmEUT2IGtxHiPlZaDSE38ARPMYtxjCHADwR9gWEUj2Iei1goxj0MNDFo8QW26vuvBtbRCT7iGx7BSIPmM3zBIV4jwnSWJg+xX9fhX3zGHg7wHadZmpz3a6gCfsjSZKnKellVR75oAqsDbKxrBw4VmzCKx/EKD3Akv7jhgGEUz6ONW0VpDiv4eQVYPLcWfg9gPivBugquOAyjeANrmMBXeZB75W2qz0YX6LTCKA7wErulne4Wc7tH4yEe96h/wvEIbuJ52XaF3mIHnVKtjdUsTf50Y9MvPr8uF4pnt4078o91DstZmpzqugqj+A3WL4E7WMvS5F1N5/8528Cm/Dc5k+dqGe+bwOAfL1RMz4kVNogAAAAASUVORK5CYII="/>
+    </defs>
+</svg>

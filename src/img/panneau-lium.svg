@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 131 206" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-11744.2,-8833.29)">
+        <g transform="matrix(1.67611,0,0,1,8674.56,8048.55)">
+            <g id="Panneau" transform="matrix(1,0,0,1,-55.97,-2158.43)">
+                <g transform="matrix(0.249115,-0.24107,-6.98055e-18,0.679602,952.728,2346.2)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(205,165,140);stroke:white;stroke-opacity:0;stroke-width:22.64px;stroke-dasharray:67.93,90.57,0,0;"/>
+                </g>
+                <g transform="matrix(-0.0719535,-0.0696297,2.93403e-18,0.679602,2204.19,1677.96)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(222,202,182);stroke:white;stroke-opacity:0;stroke-width:22.05px;stroke-dasharray:66.15,88.2,0,0;"/>
+                </g>
+                <g transform="matrix(-0.0719535,-0.0696297,2.93403e-18,0.316791,2172.68,2559.96)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(209,182,163);stroke:white;stroke-opacity:0;stroke-width:49.85px;stroke-dasharray:149.56,199.41,0,0;"/>
+                </g>
+                <g transform="matrix(-0.249115,0.24107,0.00777371,0.00752265,2881.71,2004.92)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(222,202,182);stroke:white;stroke-opacity:0;stroke-width:28.88px;stroke-dasharray:86.63,115.51,0,0;"/>
+                </g>
+                <g transform="matrix(-2.5413,2.45923,0.00777371,0.00752265,11847.7,-6654.83)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(209,182,156);stroke:white;stroke-opacity:0;stroke-width:2.79px;stroke-dasharray:8.38,11.17,0,0;"/>
+                </g>
+                <g transform="matrix(0.516687,-0.5,0,1.1547,-4225.43,826.197)">
+                    <rect x="11840.2" y="7024.69" width="135.202" height="69.804" style="fill:rgb(222,202,182);"/>
+                </g>
+                <g transform="matrix(0.199692,-0.193243,0,0.446275,-440.181,2148.56)">
+                    <text x="11733.4px" y="7085.03px" style="font-family:'EffraTrial-Bold', 'Effra Trial', sans-serif;font-weight:700;font-size:47.104px;fill:rgb(37,36,36);">L<tspan x="11760.3px " y="7085.03px ">a</tspan>bor<tspan x="11856.6px 11881.1px 11899.3px " y="7085.03px 7085.03px 7085.03px ">ato</tspan>ir<tspan x="11955.8px " y="7085.03px ">e</tspan></text>
+                    <text x="11699.6px" y="7132.13px" style="font-family:'EffraTrial-Bold', 'Effra Trial', sans-serif;font-weight:700;font-size:47.104px;fill:rgb(37,36,36);">d<tspan x="11726.9px 11740.8px " y="7132.13px 7132.13px ">&apos;i</tspan>nf<tspan x="11794.9px " y="7132.13px ">o</tspan>rmatique</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

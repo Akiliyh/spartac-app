@@ -1,0 +1,690 @@
+:root {
+  --app-sizeW: 3508px; /* 7016px 4961px; A2 300 dpi in px*/ /*3508px 2480px 150dpi*/ /*594mm 420mm*/
+  --app-sizeH: 2480px; /* 1.5625 ratio between A2 150dpi and 594mm and 420mm*/
+  --app-ratio: 1.5625;
+}
+
+html{
+  background-color: #949476;
+}
+
+.whereAmI{
+  border: none;
+  position: absolute;
+  top: 85vh;
+  left: calc(50vw - 150px);
+  z-index: 999;
+  color: aliceblue;
+  background-color: #00003E;
+  border-radius: 50px;
+  padding: 10px 25px;
+  font-size: 30px;
+}
+
+.debug{
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  padding: 100px 50px;
+  background-color: #00003e;
+  height: 100vh;
+  color: white;
+  gap: 10px;
+  transition: .6s;
+  transform: translateX(-250px);
+}
+
+.congrats {
+  position: absolute;
+  background-color: #00003E;
+  color: white;
+  z-index: 1000;
+  padding: 50px;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: auto;
+  margin-bottom: auto;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  width: 35vw;
+  height: fit-content;
+  border-radius: 25px;
+  animation: congratsAnim 1s ease 5s forwards;
+  opacity: 0;
+  font-size: 30px;
+  text-align: center;
+}
+
+@keyframes congratsAnim{
+  0%{
+    opacity: 0;
+  }
+  100%{
+    opacity: 1;
+  }
+}
+
+.settings{
+  width: 25px;
+  fill: white;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 1000;
+}
+
+.debug.shown{
+  transform: translateX(0px);
+}
+
+body {
+  background-image: url(./img/map.svg);
+  background-size: var(--app-sizeW) var(--app-sizeH) ; 
+  background-repeat: no-repeat;
+  }
+
+  header{
+    z-index: 998;
+    position: absolute;
+    display: flex;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin-top: 50px;
+    width: fit-content;
+  }
+
+  .logo{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    z-index: 15;
+  }
+
+  .logo img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    z-index: 15;
+    max-width: 500px;
+  }
+
+  .form-pos{
+    z-index: 16;
+  }
+
+  .modalContainer{
+    z-index: 25;
+      max-width: 60vw;
+      min-height: 10vh;
+      width: 100%;
+      position: fixed;
+      top: 60%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      background-color: #ffffff;
+      box-shadow: 0px 0px 8px 0px rgba(255, 255, 255, 0.75);
+      border-radius: 8px;
+      animation: modalShowing .8s forwards ease 1;
+      font-size: larger;
+  }
+
+  .progression{
+    font-size: 4vw;
+    font-weight: 700;
+    color: white;
+    display: block;
+    width: fit-content;
+    position: absolute;
+    top: 10px;
+    right: 50px;
+    z-index: 15;
+
+  }
+
+  .resetBtn{
+    z-index: 5;
+  }
+
+  .modalText{
+    margin: 10%;
+  }
+
+  .welcomeText{
+    font-size: 1.5em;
+  }
+
+  .cross{
+    height: 25px;
+    width: 25px;
+    position: absolute;
+    margin: 15px;
+    cursor: pointer;
+  }
+
+  @keyframes modalShowing{
+    0%{
+      transform: translate(-50%, -40%);
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+
+  .overlay {
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    z-index: 50;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
+
+  .App{
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+  }
+
+  .map{
+    position: relative;
+    overflow: hidden;
+    width: var(--app-sizeW) ;
+    height: var(--app-sizeH);
+  }
+
+  .exterior{
+    z-index: 2;
+  }
+
+    .motion{
+      pointer-events: none;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    object-fit: cover;
+    z-index: 9999;
+    background-color: white;
+    animation: motionDesign 7s forwards;
+  }
+
+  @keyframes motionDesign{
+    70%{
+      opacity: 1;
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
+  /* On-screen interactive elements */
+
+  .bu{
+    width: calc(1100px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .bu-livre{
+    width: calc(25px * var(--app-ratio));
+    height: calc(25px * var(--app-ratio));
+    position: absolute;
+    z-index: 3;
+  }
+
+  .bu-personnel{
+    position: absolute;
+    z-index: 2;
+    width: calc(30px * var(--app-ratio));
+  }
+
+  .interactive{
+    animation-name: glow;
+    animation-duration: 1s;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
+  }
+
+  @keyframes glow {
+    0% {
+      filter: drop-shadow(0px 0px 1px rgba(255, 255, 255, 0.521))
+      drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.5))
+      drop-shadow(0px 0px 10px #ff80b381)
+      drop-shadow(0px 0px 30px #ff4d9486)
+      drop-shadow(0px 0px 40px #ff006679);
+    }
+  
+    100% {
+      filter: drop-shadow(0px 0px 3px rgba(255, 255, 255, 0.692))
+      drop-shadow(0px 0px 6px rgba(255, 255, 255, 0.603))
+      drop-shadow(0px 0px 15px #ff80b3)
+      drop-shadow(0px 0px 40px #ff4d94)
+      drop-shadow(0px 0px 60px #ff0066); 
+    }
+  }
+
+  .bout-rouge{
+    width: calc(20px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .panneau{
+    width: calc(70px * var(--app-ratio));
+    position: absolute;
+    z-index: 3;
+  }
+
+  .panneau.bu{
+    width: calc(85px * var(--app-ratio));
+  }
+
+  .arbres{
+    pointer-events: none;
+    z-index: 4;
+    position: absolute;
+    width: var(--app-sizeW);
+    height: var(--app-sizeH);
+  }
+
+  .poteaux{
+    pointer-events: none;
+    position: absolute;
+    z-index: 2;
+    width: var(--app-sizeW);
+    height: var(--app-sizeH);
+  }
+
+  .LIUM{
+    width: calc(650px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .LAUM{
+    width: calc(1600px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .hidden{
+    pointer-events: none;
+    animation: 1s forwards transitionBuilding;
+  }
+
+  @keyframes transitionBuilding {
+    0%{
+
+    }
+    100%{
+      opacity: 0;
+    }
+  }
+
+  .lock{
+    width: calc(60px * var(--app-ratio)); 
+    height: calc(60px * var(--app-ratio));
+    /*width: calc(100px * var(--app-ratio));
+    height: calc(100px * var(--app-ratio)); For rive's locks*/
+    position: absolute;
+    z-index: 3;
+  }
+
+  .lium-poster{
+    position: absolute;
+    width: 50px;
+  }
+
+  .lock.interior{
+    width: calc(40px * var(--app-ratio));
+    height: calc(40px * var(--app-ratio));
+    /*width: calc(60px * var(--app-ratio));
+    height: calc(60px * var(--app-ratio)); For rive's locks*/
+    z-index: 1;
+  }
+
+  .locked.lock{
+    animation: unopable 1s ease forwards;
+  }
+
+  @keyframes unopable {
+    33%{
+      transform: rotate(-20deg);
+    }
+    66%{
+      transform: rotate(20deg);
+    }
+    100%{
+      transform: rotate(0deg);
+    }
+  }
+
+  .unlocked.lock{
+    animation: unlock ease-out 1s forwards /*1s 1 second delay for rive locks' in order to see the lock unlocks itself animation thing */ ;
+  }
+
+  .gone{
+    pointer-events: none;
+  }
+
+  @keyframes unlock {
+  0%{
+
+  }
+  50%{
+    opacity: 1;
+  }
+  100%{
+    transform: translate(500px,-800px) rotate(180deg);
+    opacity: 0;
+    pointer-events: none;
+  }
+}
+
+  /*.test{
+    width: 500px;
+    height: 500px;
+    position: absolute;
+    background-color: blue;
+  }*/
+
+  /* Zones de détection */
+
+  .score{
+    z-index: 5;
+    width: calc(190px * var(--app-ratio));
+    height: calc(190px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .laum-chercheurs{
+    width: calc(185px * var(--app-ratio));
+    height: calc(235px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .salle-reverberante{ /*feet on the floor*/
+    width: calc(40px * var(--app-ratio));
+    position: absolute;
+    transition: 1s;
+    opacity: 1;
+  }
+
+  .carnyx-player{ /*feet on the floor*/
+    width: calc(50px * var(--app-ratio));
+    position: absolute;
+    transition: 1s;
+    opacity: 1;
+  }
+
+  .feet-hidden{
+    opacity: 0;
+    transition: 1s;
+  }
+
+  .yoga {
+    width: calc(120px * var(--app-ratio));
+    height: calc(120px * var(--app-ratio));
+    position: absolute;
+    background-image: url(./img/yoga.svg);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+  }
+
+  .note {
+    width: calc(25px * var(--app-ratio));
+    height: calc(25px * var(--app-ratio));
+    position: absolute;
+    background-image: url(./img/note.svg);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center;
+    animation: note-animation 2s infinite ease-in-out;
+  }
+
+  @keyframes note-animation {
+    0%{}
+    50%{
+      transform: translateY(50%);
+    }
+    100%{}
+  }
+
+  .lium-ferme, .lium-info {
+    width: calc(120px * var(--app-ratio));
+    height: calc(120px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .dialog{
+    position: relative;
+  }
+
+  .personDialog {
+    display: flex;
+    width: 100vw;
+    height: 80vh;
+    margin-top: 10vh;
+    z-index: 1;
+    animation: personAnimation 1s ease;
+  }
+
+  @keyframes personAnimation{
+    0%{
+      transform: translate(50%,0);
+      opacity: 0;
+    }
+    100%{
+      opacity: 1;
+    }
+  }
+
+  .personDialog img{
+    object-fit: contain;
+    margin-left: auto;
+  }
+
+  .bu-livre-modal img{
+    width: 50%;
+  }
+
+  .joueur-de-musique {
+    width: calc(80px * var(--app-ratio));
+    height: calc(80px * var(--app-ratio));
+    position: absolute;
+    background-image: url(./img/musicplayers.svg);
+    background-repeat: no-repeat;
+    background-size: 50%;
+    background-position: center;
+  }
+
+  .motion video{
+    width: 100vw;
+    height: 100vh;
+    object-fit: contain;
+    z-index: 100;
+  }
+
+  .calculateMotion{
+    z-index: 999;
+    width: 150vw;
+    height: 150vh;
+    background-color: #00003E;
+  }
+
+  .calculateMotion video{
+    width: 125vw;
+    height: 125vh;
+    margin-left: -12.5vw;
+    margin-top: -12.5vh;
+  }
+
+ .tram{
+  background-image: url(./img/tram.svg);
+  width: calc(300px * var(--app-ratio));
+  height: calc(300px * var(--app-ratio));
+  background-repeat: no-repeat;
+  position: absolute;
+  animation: tramAnimation 14s infinite linear/*, glow 1s infinite alternate*/;
+ } 
+
+ @keyframes tramAnimation {
+   0% {
+    transform: translateX(3600px) translateY(-2090px)
+   }
+   100% {
+    transform: translateX(-3600px) translateY(2090px)
+   }
+ }
+
+ /* Fireworks src: https://alvaromontoro.com/blog/68002/creating-a-firework-effect-with-css */
+
+ @keyframes firework {
+  0% { transform: translate(var(--x), var(--initialY)); width: var(--initialSize); opacity: 1; }
+  50% { width: 1vmin; opacity: 1; }
+  100% { width: var(--finalSize); opacity: 0; }
+}
+
+/* @keyframes fireworkPseudo {
+  0% { transform: translate(-50%, -50%); width: var(--initialSize); opacity: 1; }
+  50% { width: 0.5vmin; opacity: 1; }
+  100% { width: var(--finalSize); opacity: 0; }
+}
+ */
+.firework,
+.firework::before,
+.firework::after
+{
+  --initialSize: 1vmin;
+  --finalSize: 45vmin;
+  --particleSize: 0.5vmin;
+  --color1: yellow;
+  --color2: khaki;
+  --color3: white;
+  --color4: lime;
+  --color5: gold;
+  --color6: mediumseagreen;
+  --y: -30vmin;
+  --x: -50%;
+  --initialY: 60vmin;
+  content: "";
+  animation: firework 2s infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, var(--y));
+  width: var(--initialSize);
+  aspect-ratio: 1;
+  background: 
+    /*
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 0%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 0%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 100% 100%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 0% 100%,
+    */
+    
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 50% 0%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 50%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 50% 100%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 0% 50%,
+    
+    /* bottom right */
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 80% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 95% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 90% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 100% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 55% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 70% 77%,
+    
+    /* bottom left */
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 22% 90%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 45% 90%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 70%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 10% 60%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 31% 80%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 28% 77%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 13% 72%,
+    
+    /* top left */
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 80% 10%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 95% 14%,
+    radial-gradient(circle, var(--color2) var(--particleSize), #0000 0) 90% 23%,
+    radial-gradient(circle, var(--color3) var(--particleSize), #0000 0) 100% 43%,
+    radial-gradient(circle, var(--color4) var(--particleSize), #0000 0) 85% 27%,
+    radial-gradient(circle, var(--color5) var(--particleSize), #0000 0) 77% 37%,
+    radial-gradient(circle, var(--color6) var(--particleSize), #0000 0) 60% 7%,
+    
+    /* top right */
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 22% 14%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 45% 20%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 33% 34%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 10% 29%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 31% 37%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 28% 7%,
+    radial-gradient(circle, var(--color1) var(--particleSize), #0000 0) 13% 42%
+    ;
+  background-size: var(--initialSize) var(--initialSize);
+  background-repeat: no-repeat;
+  z-index: 10;
+}
+
+.firework::before {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+/*   transform: translate(-20vmin, -2vmin) rotate(40deg) scale(1.3) rotateY(40deg); */
+  transform: translate(-50%, -50%) rotate(40deg) scale(1.3) rotateY(40deg);
+/*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework::after {
+  --x: -50%;
+  --y: -50%;
+  --initialY: -50%;
+/*   transform: translate(44vmin, -50%) rotate(170deg) scale(1.15) rotateY(-30deg); */
+  transform: translate(-50%, -50%) rotate(170deg) scale(1.15) rotateY(-30deg);
+/*   animation: fireworkPseudo 2s infinite; */
+}
+
+.firework:nth-child(2) {
+  --x: 30vmin;
+}
+
+.firework:nth-child(2),
+.firework:nth-child(2)::before,
+.firework:nth-child(2)::after {
+  --color1: pink;
+  --color2: violet;
+  --color3: fuchsia;
+  --color4: orchid;
+  --color5: plum;
+  --color6: lavender;  
+  --finalSize: 40vmin;
+  left: 30%;
+  top: 60%;
+  animation-delay: -0.25s;
+}
+
+.firework:nth-child(3) {
+  --x: -30vmin;
+  --y: -50vmin;
+}
+
+.firework:nth-child(3),
+.firework:nth-child(3)::before,
+.firework:nth-child(3)::after {
+  --color1: cyan;
+  --color2: lightcyan;
+  --color3: lightblue;
+  --color4: PaleTurquoise;
+  --color5: SkyBlue;
+  --color6: lavender;
+  --finalSize: 35vmin;
+  left: 70%;
+  top: 60%;
+  animation-delay: -0.4s;
+}
+  

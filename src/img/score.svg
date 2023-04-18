@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 259 423" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlnsSerif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-3817.79,-1148.21)">
+        <g transform="matrix(1.67611,0,0,1,235.39,0)">
+            <g id="Panneau">
+                <g transform="matrix(-0.0719535,-0.0696297,2.93403e-18,0.538054,2462.98,461.771)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(246,244,246);stroke:white;stroke-opacity:0;stroke-width:28.34px;stroke-dasharray:85.03,113.38,0,0;"/>
+                </g>
+                <g transform="matrix(-0.0719535,-0.0696297,2.93403e-18,0.538054,2529.4,397.498)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(246,244,246);stroke:white;stroke-opacity:0;stroke-width:28.34px;stroke-dasharray:85.03,113.38,0,0;"/>
+                </g>
+                <g transform="matrix(0.596618,0,0,1,-5171.84,-4039.1)">
+                    <path d="M12503.2,5187.31L12509.1,5190.73L12256.9,5336.33L12256.9,5507.84L12251,5504.42L12251,5332.91L12503.2,5187.31Z" style="fill:rgb(19,19,19);"/>
+                </g>
+                <g transform="matrix(0.136078,-0.131684,1.65102e-16,0.316137,1651.5,1474.9)">
+                    <rect x="3596.24" y="935.97" width="1105.72" height="542.525" style="fill:rgb(28,28,28);"/>
+                </g>
+                <g transform="matrix(0.235643,-0.228033,-9.60876e-18,0.538054,1264.03,1079.19)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:white;stroke:white;stroke-opacity:0;stroke-width:27.31px;stroke-dasharray:81.92,109.22,0,0;"/>
+                </g>
+                <g transform="matrix(0.235643,-0.228033,-9.60876e-18,0.538054,1330.45,1014.92)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:white;stroke:white;stroke-opacity:0;stroke-width:27.31px;stroke-dasharray:81.92,109.22,0,0;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(1.67611,0,0,1,235.39,0)">
+            <g id="On-tablet-only" serifId="On tablet only">
+                <g transform="matrix(0.516687,-0.5,-4.09324e-17,1.1547,2164.8,1407.64)">
+                    <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:58.333px;fill:rgb(255,0,9);">24</text>
+                </g>
+                <g transform="matrix(0.516687,-0.5,-4.89717e-17,1.1547,2164.8,1339.11)">
+                    <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:29.167px;fill:white;">LOC.</text>
+                </g>
+                <g transform="matrix(0.516687,-0.5,-4.11075e-17,1.1547,2230.24,1343.92)">
+                    <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:58.333px;fill:rgb(255,0,9);">30</text>
+                </g>
+                <g transform="matrix(0.516687,-0.5,-5.18928e-17,1.1547,235.26,1682.06)">
+                    <g>
+                        <g transform="matrix(1,0,0,1,3850.38,1320.06)">
+                            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:29.167px;fill:white;">VISIT</text>
+                        </g>
+                        <g transform="matrix(1,0,0,1,3920.08,1320.06)">
+                            <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:29.167px;fill:white;">.</text>
+                        </g>
+                    </g>
+                </g>
+                <g transform="matrix(0.516687,-0.5,-8.99308e-17,1.1547,2209.54,1358.54)">
+                    <text x="0px" y="0px" style="font-family:'ArialMT', 'Arial', sans-serif;font-size:58.333px;fill:rgb(255,0,9);">-</text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

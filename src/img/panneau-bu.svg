@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 168 189" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" xmlSpace="preserve" xmlnsSerif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:1.5;">
+    <g transform="matrix(1,0,0,1,-8942.51,-10420.4)">
+        <g transform="matrix(1.67611,0,0,1,8674.56,8048.55)">
+            <g id="Panneau" transform="matrix(1.19592,0,0,1.19592,-2095.91,-1175.65)">
+                <g transform="matrix(0.287653,0,0,0.588552,802.514,1616.07)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(205,165,140);stroke:white;stroke-opacity:0;stroke-width:15.07px;stroke-dasharray:45.2,60.27,0,0;"/>
+                </g>
+                <g transform="matrix(-0.0444974,-2.77556e-17,0,0.588552,2097.2,1616.07)">
+                    <rect x="3897.79" y="2301.14" width="27.489" height="254.435" style="fill:rgb(222,202,182);stroke:white;stroke-opacity:0;stroke-width:19.32px;stroke-dasharray:57.97,77.3,0,0;"/>
+                </g>
+                <g transform="matrix(0.618466,0,1.15088e-16,1.06035,-5436.51,-4460.23)">
+                    <rect x="11840.2" y="7024.69" width="135.202" height="69.804" style="fill:rgb(212,186,160);"/>
+                </g>
+                <g transform="matrix(0.596618,0,1.11022e-16,1,-5176.36,-4034.15)">
+                    <rect x="11840.2" y="7024.69" width="135.202" height="69.804" style="fill:rgb(222,202,182);"/>
+                </g>
+                <g transform="matrix(0.26135,-5.55112e-17,0,0.438052,-1171.64,-79.5034)">
+                    <text x="11723.4px" y="7085.03px" style="font-family:'EffraTrial-Bold', 'Effra Trial', sans-serif;font-weight:700;font-size:47.104px;fill:rgb(37,36,36);">Biblio<tspan x="11841.5px " y="7085.03px ">t</tspan>hèque</text>
+                    <text x="11721.6px" y="7132.13px" style="font-family:'EffraTrial-Bold', 'Effra Trial', sans-serif;font-weight:700;font-size:47.104px;fill:rgb(37,36,36);">Univ<tspan x="11816.2px 11842px 11859.9px " y="7132.13px 7132.13px 7132.13px ">ers</tspan>itair<tspan x="11967.6px " y="7132.13px ">e</tspan></text>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
