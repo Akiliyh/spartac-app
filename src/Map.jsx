@@ -429,7 +429,7 @@ class Map extends Component {
                     : null}
                 <div>
                     {this.state.progression === 10 ?
-                        <Endscreen></Endscreen>
+                        <Endscreen></Endscreen> 
                         : null}
                 </div>
 
