@@ -21,6 +21,20 @@ html{
   font-size: 30px;
 }
 
+.error{
+  border: none;
+  position: fixed;
+  top: 70vh;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 5;
+  color: aliceblue;
+  background-color: #880c0c;
+  border-radius: 25px;
+  padding: 10px 25px;
+  font-size: 30px;
+}
+
 .debug{
   z-index: 999;
   position: fixed;
@@ -34,6 +48,67 @@ html{
   gap: 10px;
   transition: .6s;
   transform: translateX(-250px);
+}
+
+.info{
+  z-index: 999;
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  padding: 100px 50px;
+  background-color: #00003e;
+  height: 100vh;
+  color: white;
+  gap: 10px;
+  transition: .6s;
+  transform: translateX(-350px);
+  overflow: hidden;
+}
+
+.logos{
+  margin-top: auto;
+  width: fit-content;
+  margin-top: 50px;
+  padding-bottom: 100vh;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin-left: -70px;
+  display: flex;
+}
+
+.liens{
+  margin-top: 50px;
+}
+
+.logos img:not(.cnrs,.laumLogo) {
+filter: brightness(0) invert(1);
+width: 125px;
+object-fit: contain;
+}
+
+.cnrs{
+  width: 40px;
+  object-fit: contain;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.laumLogo{
+  width: 100px;
+  filter: brightness(0) invert(1);
+  object-fit: contain;
+}
+
+.voix > p,.credits-projet > p {
+  font-weight: 800;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+.credits p {
+  margin: 0;
+  font-size: small;
 }
 
 .congrats {
@@ -53,7 +128,7 @@ html{
   width: 35vw;
   height: fit-content;
   border-radius: 25px;
-  animation: congratsAnim 1s ease 5s forwards;
+  animation: congratsAnim 1s ease 1s forwards;
   opacity: 0;
   font-size: 30px;
   text-align: center;
@@ -75,6 +150,19 @@ html{
   top: 20px;
   left: 20px;
   z-index: 1000;
+}
+
+.info-show{
+  height: 25px;
+  fill: white;
+  position: absolute;
+  top: 20px;
+  left: 65px;
+  z-index: 1000;
+}
+
+.info.shown{
+  transform: translateX(0px);
 }
 
 .debug.shown{
@@ -143,8 +231,58 @@ body {
     top: 10px;
     right: 50px;
     z-index: 15;
-
   }
+
+  .cards{
+    position: absolute;
+    left: 0;
+    margin-left: 50px;
+    z-index: 5;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    pointer-events: none;
+  }
+
+  .card{
+    animation: card-apparition 1s forwards cubic-bezier(0.215, 0.610, 0.355, 1) 1s;
+    width: 10vw;
+    height: 10vh;
+    background-color: white;
+    border-radius: 10px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    opacity: 0;
+    border: rgb(192, 163, 0) solid 5px;
+  }
+
+
+@keyframes card-apparition {
+  0% {
+            transform: translateX(1000px) rotate(0deg);
+    opacity: 0;
+  }
+  100% {
+            transform: translateX(0) rotate(360deg);
+    opacity: 1;
+  }
+}
+
+  .key{
+    background-image: url(./img/cle.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+  }
+
+  .instrument{
+    background-image: url(./img/instrument.svg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 70%;
+  }
+
 
   .resetBtn{
     z-index: 5;
@@ -211,7 +349,7 @@ body {
     object-fit: cover;
     z-index: 9999;
     background-color: white;
-    animation: motionDesign 7s forwards;
+    animation: motionDesign 11s forwards;
   }
 
   @keyframes motionDesign{
@@ -454,8 +592,14 @@ body {
   }
 
   .lium-ferme, .lium-info {
-    width: calc(120px * var(--app-ratio));
-    height: calc(120px * var(--app-ratio));
+    width: calc(60px * var(--app-ratio));
+    height: calc(60px * var(--app-ratio));
+    position: absolute;
+  }
+
+  .lium-desk{
+    width: calc(80px * var(--app-ratio));
+    height: calc(80px * var(--app-ratio));
     position: absolute;
   }
 
@@ -485,10 +629,6 @@ body {
   .personDialog img{
     object-fit: contain;
     margin-left: auto;
-  }
-
-  .bu-livre-modal img{
-    width: 50%;
   }
 
   .joueur-de-musique {

@@ -6,10 +6,11 @@ class Debug extends Component {
         super(props);
         this.state = {
             isPlaying: false,
-
+            iteration: 0
         }
         this.showSettings = this.showSettings.bind(this);
         this.goToLocation = this.goToLocation.bind(this);
+        this.fetchDebug = this.fetchDebug.bind(this);
     }
 
     componentDidMount() {
@@ -27,30 +28,37 @@ class Debug extends Component {
         var inputElementY = document.getElementById('y');
         if (inputElementX || inputElementY != null) {
         if (element.className === 'lium-btn') {
-                inputElementX.value = 46;
-                inputElementY.value = 29;
+                inputElementX.value = 36;
+                inputElementY.value = 24;
             }
             if (element.className === 'laum-btn') {
-                inputElementX.value = 23;
-                inputElementY.value = 31;
+                inputElementX.value = 17;
+                inputElementY.value = 33;
             }
             if (element.className === 'bu-btn') {
-                inputElementX.value = 35;
-                inputElementY.value = 65;
+                inputElementX.value = 32;
+                inputElementY.value = 55;
             }
             if (element.className === 'parc-btn') {
-                inputElementX.value = 45;
-                inputElementY.value = 47;
+                inputElementX.value = 35;
+                inputElementY.value = 49;
             }
             if (element.className === 'score-btn') {
-                inputElementX.value = 37;
-                inputElementY.value = 3;
+                inputElementX.value = 30;
+                inputElementY.value = 12;
             }    
             if (element.className === 'yoga-btn') {
-                inputElementX.value = 28;
-                inputElementY.value = 3;
+                inputElementX.value = 20;
+                inputElementY.value = 6;
             } 
         }
+    }
+
+    fetchDebug() {
+        this.props.fetch();
+        setTimeout(() => {
+            this.props.fetch();
+        }, 500);
     }
 
     componentWillUnmount() {
@@ -70,10 +78,11 @@ class Debug extends Component {
                     </div>
                     <button className="progressionUp" onClick={this.props.setProgression}>ProgressionUP</button>
                     <button className="progressionDown" onClick={this.props.setProgression}>ProgressionDOWN</button>
+                    <button className="hasInstrument" onClick={this.props.setProgression}>Toggle Instrument</button>
                     <form className="form-pos">
                         <input type="number" max="600" name="x" id="x" placeholder="x" ref={this.props.refX} />
                         <input type="number" max="600" name="y" id="y" placeholder="y" ref={this.props.refY} />
-                        <button type="button" className="submitBtn" onClick={this.props.fetch}>Set</button>
+                        <button type="button" className="submitBtn" onClick={this.fetchDebug}>Set</button>
                     </form>
                     Je suis à {this.props.rawPosition.x + ' ,' + this.props.rawPosition.y + ' ' + this.props.backgroundPosition}
 

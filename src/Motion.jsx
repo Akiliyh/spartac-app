@@ -1,5 +1,5 @@
 import { Component } from "react";
-import motion from "./videos/motiondesign.mp4";
+import motion from "./videos/motiondesignspart.mp4";
 
 class Motion extends Component {
 
@@ -13,7 +13,7 @@ class Motion extends Component {
     componentDidMount() {
         setTimeout(() => {
             this.setState({isPlaying : true});
-        }, 7000);
+        }, 11000);
     }
 
     componentWillUnmount() {

@@ -3,6 +3,7 @@ import Modal from './Modal.jsx';
 import Endscreen from './Endscreen.jsx';
 import Lock from './Lock.jsx';
 import Debug from './Debug.jsx';
+import Info from './Info.jsx';
 import LAUM from './img/laum1.svg';
 import LAUMOpened from './img/laum2.svg';
 import LAUMChercheurs from './img/laum-chercheurs.svg';
@@ -13,16 +14,14 @@ import LIUMOpened from './img/lium2.svg';
 import LAUMFeet from './img/feet.svg';
 import carnyx from './img/carnyx-player.svg';
 import LIUM from './img/lium1.svg';
-import panneauBU from './img/panneau-bu.svg';
-import panneauLIUM from './img/panneau-lium.svg';
-import panneauLAUM from './img/panneau-laum.svg';
-import desk from './img/desk-lium.svg';
+import desk from './img/desk-lium-desk.svg';
+import info from './img/desk-lium-info.svg';
 import poster from './img/carnyx-poster.svg';
 import bu from './img/bu.svg';
 import livre from './img/livre.svg';
 import personnel from './img/bu-personnel.svg';
 import boutRouge from './img/bout-rouge.svg';
-import whiteNoise from './white-noise.mp3';
+import whiteNoise from './audio/white-noise.mp3';
 import score from './img/score.svg';
 import arbres from './img/trees.svg';
 import poteaux from './img/poteaux.svg';
@@ -40,8 +39,8 @@ class Map extends Component {
         this.previousRefX = null;
         this.previousRefY = null;
         this.state = {
-            relativePosX: 0,
-            relativePosY: 0,
+            relativePosX: null,
+            relativePosY: null,
             isCalculating: false, /* Is the position currently being calculated */
             isModalActive: false, /* Is the modal currently being displayed */
             curModalText: null, /* Text shown inside the modal */
@@ -54,13 +53,15 @@ class Map extends Component {
             laumImage: LAUM,
             hasInstrument: false,
             modalImg: null,
+            error: false,
             reset: false,
             backgroundPosition: '0cm 0cm',
+            isOver: false, /* true when the adventure is finished */
             rawPosition: {
                 y: 0,
                 x: 0,
             },
-            yOffset: 3, /* Offsets by default */
+            yOffset: 9, /* Offsets by default */
             xOffset: 5,
         }
         this.displayData = this.displayData.bind(this);
@@ -93,11 +94,22 @@ class Map extends Component {
     setProgression(e) {   /* Modifie la progression depuis la fenêtre de Dev */
         console.log(this.state.progression);
         console.log(this.state.isCalculating);
+        if (e.target.className === "hasInstrument") {
+            if (this.state.hasInstrument) {
+                this.setState({
+                    hasInstrument: false,
+                })
+            } else {
+                this.setState({
+                    hasInstrument: true,
+                })
+            }
+        }
         if (e.target.className === "progressionUp") {
             this.setState({
                 progression: this.state.progression + 1,
             })
-        } else {
+        } else if (e.target.className === "progressionDown"){
             this.setState({
                 progression: this.state.progression - 1,
             })
@@ -115,6 +127,7 @@ class Map extends Component {
             isLaumOpened: false,
             isAnechOpened: false,
             isReverbOpened: false,
+            hasInstrument: false,
         })
         setTimeout(() => {
             this.setState({
@@ -135,6 +148,15 @@ class Map extends Component {
         } else {
             this.setOffsets();
             this.getPosition();
+            if (e !== undefined) {
+                console.log(e.target);   
+            }
+            console.log(this.state.isModalActive);
+            setTimeout(() => {
+                if (this.state.isModalActive) {
+                    this.toggleModal();
+                }
+            }, 2000);
         }
     }
 
@@ -158,8 +180,14 @@ class Map extends Component {
                 if (data.status === "success") {
                     this.displayData(data);
                     this.audio.load();
+                    this.setState({
+                        error: false,
+                    })
                 }
                 else {
+                    this.setState({
+                        error: true,
+                    })
                     this.displayData("undefined")
                     console.log("error finding position");
                 }
@@ -174,9 +202,11 @@ class Map extends Component {
     /* On associe le x du prototype avec l'y de l'application pour faire correspondre les coords */
 
     displayData(data) {
+        if (data.y > 55) {
+            data.y = 55;
+        }
         /* data coords are reversed */
         console.log(data);
-        console.log(window.innerHeight);
         if (this.refX.current.value !== this.previousRefX || this.refY.current.value !== this.previousRefY) {
             if (this.refX.current.value !== "" && this.refX.current !== null && this.refY.current.value !== "" && this.refY.current.value !== null) {
                 data.x = this.refX.current.value;
@@ -205,8 +235,17 @@ class Map extends Component {
             this.setState({
                 isCalculating: false,
             })
-        }, 1000);
-
+        }, 1500);
+        console.log(this.state.rawPosition.y);
+        /*if (this.state.rawPosition.y === undefined || this.state.rawPosition.y === 0) {
+            this.setState({
+                error: true,
+            })
+        } else if (this.state.rawPosition.y !== undefined && this.state.rawPosition.y !== 0){
+            this.setState({
+                error: false,
+            })
+        }*/
     }
 
     /* Fetch les dialogues */
@@ -240,29 +279,34 @@ class Map extends Component {
 
     setOffsets() {
         /* manual manipulation of offsets ONLY FOR ONE SPECIFIC TABLET */
-        if (this.state.rawPosition.x < 21) {
+        if (this.state.rawPosition.x < 20) {
             this.setState({
                 xOffset: 10,
             })
-        } else if (this.state.rawPosition.x > 31 && this.state.rawPosition.x < 42) {
+        } else if (this.state.rawPosition.x > 21 && this.state.rawPosition.x < 32) {
             this.setState({
-                xOffset: 0,
+                xOffset: 5,
             })
-        } else if (this.state.rawPosition.y < 32) {
+        } else if (this.state.rawPosition.y < 32 && this.state.rawPosition.y > 20) {
             this.setState({
                 yOffset: 9,
             })
-        } else if (this.state.rawPosition.y > 55) {
+        }if (this.state.rawPosition.y < 20) {
             this.setState({
-                yOffset: -20,
+                yOffset: 15,
+            })
+        } if (this.state.rawPosition.y > 45) {
+            this.setState({
+                yOffset: 0,
             })
         }
-        if (this.state.rawPosition.x > 42) {
+        if (this.state.rawPosition.x > 32) {
             this.setState({
-                xOffset: 10,
+                xOffset: -10,
             })
         }
         console.log(this.state.rawPosition);
+        console.log(this.state.error);
         console.log(this.state.xOffset);
         console.log(this.state.yOffset);
     }
@@ -339,9 +383,11 @@ class Map extends Component {
         }
         if (this.state.isModalActive) {
             setTimeout(() => {
-                console.log('test');
                 this.setState({ isModalActive: false });
             }, 1000);
+            if (this.state.progression === 10) {
+                this.setState({ isOver: true });
+            }
         } else {
             this.setState({ isModalActive: true });
         }
@@ -429,19 +475,27 @@ class Map extends Component {
                     </div>
                     : null}
                 <div>
-                    {this.state.progression === 10 ?
+                    {this.state.isOver ?
                         <Endscreen></Endscreen> 
                         : null}
                 </div>
+                {this.state.error ? <div className="error">Une erreur s'est produite lors du calcul de la position. Veuillez réessayer</div> : null}
 
                 {!this.state.reset ?
                     <div>
                         <div className="progression">{this.state.progression}/10</div>
+                        <div className="cards">
+                            {this.state.hasInstrument ? <div className="card instrument"></div>
+                            : null }
+                            {this.state.progression >= 8 ? <div className="card key"></div>
+                            : null }
+                        </div>
                         <div className="map">
 
                             {/* Debug  */}
 
-                            <Debug toggleModal={this.toggleModal} refX={this.refX} refY={this.refY} backgroundPosition={this.state.backgroundPosition} handleReset={this.handleResetBtn} setOffsets={this.setOffsets} setProgression={this.setProgression} fetch={this.debugFetch} xOffset={this.state.xOffset} yOffset={this.state.yOffset} rawPosition={this.state.rawPosition}></Debug>
+                            <Debug hasInstrument={this.state.hasInstrument} toggleModal={this.toggleModal} refX={this.refX} refY={this.refY} backgroundPosition={this.state.backgroundPosition} handleReset={this.handleResetBtn} setOffsets={this.setOffsets} setProgression={this.setProgression} fetch={this.debugFetch} xOffset={this.state.xOffset} yOffset={this.state.yOffset} rawPosition={this.state.rawPosition}></Debug>
+                            <Info></Info>
 
                             <button className="whereAmI" onClick={this.fetchData}>Calculer ma position</button>
 
@@ -455,8 +509,6 @@ class Map extends Component {
                             
                             {/* LAUM */}
 
-                            <img src={panneauLAUM} alt="" className={"panneau"} style={{ top: (this.convertPxToCm(1280) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1510) + this.state.relativePosX) + 'cm' }}/>
-
                             <div onTouchStart={this.state.progression >= 2 ? this.handleBuildingsChange : null} className="lock laum-lock" style={{ top: (this.convertPxToCm(1200) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1080) + this.state.relativePosX) + 'cm' }}>
 
                                 <Lock inInterior={false} isOpenable={this.state.progression >= 2 ? true : false} ></Lock> {/* progression 2 equals yoga is done*/}
@@ -469,7 +521,7 @@ class Map extends Component {
                             </div>
                             <div onTouchStart={this.state.progression >= 8 ? this.handleBuildingsChange : null} className="lock laum-lock interior anech" style={{ top: (this.convertPxToCm(1190) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(910) + this.state.relativePosX) + 'cm' }}>
 
-                                <Lock inInterior={true} isOpenable={this.state.progression >= 8 ? true : false} ></Lock> {/* progression 6 equals carnyx is obtained*/}
+                                <Lock inInterior={true} isOpenable={this.state.progression >= 8 ? true : false} ></Lock> {/* progression 8 equals carnyx is obtained*/}
                             </div>
                             <img src={LAUMAllOpened} alt="" className={this.state.isReverbOpened || this.state.isAnechOpened ? "LAUM opened" : "LAUM hidden"} style={{ top: (this.convertPxToCm(900) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(-100) + this.state.relativePosX) + 'cm' }} />
                             <img src={this.state.laumImage} alt="" className={this.state.isLaumOpened ? this.state.isAnechOpened && this.state.isReverbOpened ? "LAUM hidden laumImage" : "LAUM opened laumImage" : "LAUM hidden laumImage"} style={{ top: (this.convertPxToCm(900) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(-100) + this.state.relativePosX) + 'cm' }} />
@@ -484,20 +536,20 @@ class Map extends Component {
 
                             <div onTouchStart={this.state.progression >= 4 ? this.handleBuildingsChange : null} className="lock lium-lock" style={{ top: (this.convertPxToCm(225) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1330) + this.state.relativePosX) + 'cm' }}>
 
-                                <Lock inInterior={false} isOpenable={this.state.progression >= 4 ? true : false} ></Lock>
+                                <Lock inInterior={false} isOpenable={this.state.progression >= 5 ? true : false} ></Lock>
                             </div>
                             <img src={this.state.isLiumOpened ? LIUMOpened : LIUM} alt="" className={this.state.isLiumOpened ? "LIUM opened" : "LIUM hidden"} style={{ top: (this.convertPxToCm(-45) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1053) + this.state.relativePosX) + 'cm' }} />
 
                             <img src={boutRouge} alt="" className={"bout-rouge interactive"} style={{ top: (this.convertPxToCm(290) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1030) + this.state.relativePosX) + 'cm' }} onTouchStart={this.toggleModal}/>
-                            <img src={panneauLIUM} alt="" className={"panneau"} style={{ top: (this.convertPxToCm(310) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1520) + this.state.relativePosX) + 'cm' }}/>
                             <img src={LIUM} alt="" className={this.state.isLiumOpened ? "LIUM hidden exterior" : "LIUM opened exterior"} style={{ top: (this.convertPxToCm(-45) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1053) + this.state.relativePosX) + 'cm' }} />
-                            <img alt="" src={desk} className={this.state.hasInstrument ? "lium-info interactive" : "lium-ferme interactive"} style={{ top: (this.convertPxToCm(140) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1400) + this.state.relativePosX) + 'cm' }} onTouchStart={this.toggleModal}></img>
-                            <img alt="" src={poster} className={"lium-poster interactive"} style={{ top: (this.convertPxToCm(60) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1460) + this.state.relativePosX) + 'cm' }} onTouchStart={this.state.hasInstrument ? this.toggleModal : null}></img>
+                            <img alt="" src={desk} className={"lium-desk"} style={{ top: (this.convertPxToCm(145) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1440) + this.state.relativePosX) + 'cm' }}></img>
+                            <img alt="" src={info} className={this.state.hasInstrument ? "lium-info interactive" : "lium-ferme interactive"} style={{ top: (this.convertPxToCm(155) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1375) + this.state.relativePosX) + 'cm' }} onTouchStart={this.toggleModal}></img>
+                            <img alt="" src={poster} className={this.state.progression >= 7 ? "lium-poster interactive" : "lium-poster"} style={{ top: (this.convertPxToCm(60) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1460) + this.state.relativePosX) + 'cm' }} onTouchStart={this.state.hasInstrument ? this.toggleModal : null}></img>
 
                             {/* cadenas informaticienne */}
 
                             <div className="lock lium-lock interior" style={{ top: (this.convertPxToCm(160) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(1310) + this.state.relativePosX) + 'cm' }}>
-                                <Lock inInterior={true} isOpenable={this.state.progression >= 2 ? true : false} ></Lock> {/* progression 2 equals yoga is done*/}
+                                <Lock inInterior={true} isOpenable={this.state.hasInstrument ? true : false} ></Lock> {/* progression 2 equals yoga is done*/}
                             </div>
 
                             {/* TRAM */}
@@ -511,7 +563,6 @@ class Map extends Component {
 
                             {/* BU */}
 
-                            <img src={panneauBU} alt="" className={"panneau bu"} style={{ top: (this.convertPxToCm(1030) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(190) + this.state.relativePosX) + 'cm' }}/>
                             <img alt="" src={personnel} className="bu-personnel interactive" style={{ top: (this.convertPxToCm(650) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(225) + this.state.relativePosX) + 'cm' }} onTouchStart={this.toggleModal}></img>
                             <img alt="" src={livre} className="bu-livre interactive" style={{ top: (this.convertPxToCm(770) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(290) + this.state.relativePosX) + 'cm' }} onTouchStart={this.toggleModal}></img>
                             <img alt="" src={bu} className="bu" style={{ top: (this.convertPxToCm(300) + this.state.relativePosY) + 'cm', left: (this.convertPxToCm(-400) + this.state.relativePosX) + 'cm' }}></img>
